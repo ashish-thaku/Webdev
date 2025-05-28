@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New user</title>
+</head>
+<body>
+<form method="post" action="/listings">
+<table >
+  <tr>
+    <td>
+      <b>Title:<br>
+      <input type="text" name="listing[title]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Description:<br>
+      <textarea name="listing[description]" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"> </textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <b>Price:<br>
+      <input type="number" name="listing[price]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </td>
+  </tr>
+    <tr>
+    <td>
+      <b>image:<br>
+      <input name="listing[image]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Location:<br>
+      <input type="text" name="listing[location]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Country:<br>
+      <input type="text" name="listing[country]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </td>
+  </tr>
+  
+</table>
+<button>Add</button>
+</form>
+</body>
+</html>
