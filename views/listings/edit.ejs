@@ -1,51 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit the <details></details></title>
-</head>
-<body>
+<% layout("/layouts/boilerplate")%>
+<div class="row">
+<div class="col-8  offset-2">
 <form method="post" action="/listings/<%=listing._id%>?_method=PUT">
-<table > 
-  <tr>
-    <td>
-      <b>Title:<br>
-      <input type="text" name="listing[title]" value="<%=listing.title%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Description:<br>
-      <textarea name="listing[description]" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><%=listing.description%> </textarea>
-    </td>
-  </tr>
-  <tr>
-    <td>
-     <b>Price:<br>
-      <input type="number" name="listing[price]" value="<%=listing.price%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-    <tr>
-    <td>
-      <b>image:<br>
-      <input name="listing[image]" value="<%=listing.image%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Location:<br>
-      <input type="text" name="listing[location]" value="<%=listing.location%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Country:<br>
-      <input type="text" name="listing[country]" value="<%=listing.country%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  
-</table>
-<button>Edit</button>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="listing[title]" class="form-control" value="<%=listing.title%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">description</label>
+      <textarea name="listing[description]" class="form-control" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><%=listing.description%> </textarea>
+  </div>
+    <div class="mb-3">
+    <label for="image" class="form-label">image/url</label>
+      <input name="listing[image.url]" value="<%=listing.image.url%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  <div class="row">
+  <div class="mb-3 col-4">
+    <label for="price" class="form-label">price</label>
+      <input type="number" name="listing[price]" value="<%=listing.price%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  <div class="mb-3 col-8">
+    <label for="country" class="form-label">country</label>
+      <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  </div>
+  <div class="mb-3">
+    <label for="location" class="form-label">location</label>
+      <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+<button class="mb-3 btn btn-dark edit-btn">Edit</button>
 </form>
-</body>
+</div>
+</div>
+

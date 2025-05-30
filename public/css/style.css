@@ -1,0 +1,95 @@
+body{
+    background-color: rgb(37, 223, 72);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222 !important;
+}
+.i-link a {
+    text-decoration: none;
+    color: #222222;
+}
+.i-link a :hover{
+    text-decoration: underline;
+}
+.f-info{
+    display: flex;
+    background-color: antiquewhite;
+    height: 5rem;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
+
+.card-body {
+    font-weight:bold;
+    
+}
+
+.f-info-social,.i-link {
+    width: 100%;
+    
+
+}
+.f-info-social i{
+    margin-right: 2rem;
+    font-size: 1.2rem;
+}
+.card{
+    margin-bottom:  2rem;
+    border: none!important;
+}
+.card-img-top{
+    border-radius: 1rem;
+    width: 100%;
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+}
+.edit-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+}
+.show-img{
+    height: 30vh;
+    width: 20vh;
+}
+.del-btn{
+    background-color: #fe424d !important;
+    border:none !important;
+}
+.btns{
+    display: flex;
+    
+}

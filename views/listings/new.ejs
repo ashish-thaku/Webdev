@@ -1,52 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New user</title>
-</head>
-<body>
+<% layout("/layouts/boilerplate")%>
+<div class="row">
+<div class="col-8  offset-2 ">
+<h2>Create a new Listing</h2>
 <form method="post" action="/listings">
-<table >
-  <tr>
-    <td>
-      <b>Title:<br>
-      <input type="text" name="listing[title]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Description:<br>
-      <textarea name="listing[description]" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"> </textarea>
-    </td>
-  </tr>
-  <tr>
-    <td>
-     <b>Price:<br>
-      <input type="number" name="listing[price]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-    <tr>
-    <td>
-      <b>image:<br>
-      <input name="listing[image]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Location:<br>
-      <input type="text" name="listing[location]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Country:<br>
-      <input type="text" name="listing[country]"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    </td>
-  </tr>
+<div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="listing[title]" placeholder="enter title" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+</div>
+<div class="mb-3">
+    <label for="Description" class="form-label">Description</label>
+    <textarea name="listing[description]" rows="4"  class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"> </textarea>
+  </div>
   
-</table>
-<button>Add</button>
+  <div class="mb-3">
+    <label for="imgage" class="form-label">image</label>
+    <input name="listing[image]" placeholder="enter image/URL" class="form-control" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+
+  <div class="row">
+  <div class="mb-3 col-4">
+    <label for="title" class="form-label">price</label>
+    <input type="number" name="listing[price]" placeholder="enter price" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+
+  <div class="mb-3 col-8">
+    <label for="country" class="form-label">country</label>
+    <input type="text" name="listing[country]" placeholder="enter country" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input type="text" name="listing[location]" class="form-control"placeholder="enter location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+
+<button class=" mb-3 btn btn-dark add-btn">Add</button><!--add-btn=class of button-->
 </form>
-</body>
-</html>
+</div>
+</div>
