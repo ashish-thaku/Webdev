@@ -2,36 +2,76 @@
 <div class="row">
 <div class="col-8  offset-2 ">
 <h2>Create a new Listing</h2>
-<form method="post" action="/listings">
+<form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
 <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" name="listing[title]" placeholder="enter title" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" name="listing[title]" placeholder="enter title" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+    <div class="valid-feedback">
+      Title Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Title is wrong!
+    </div>
 </div>
 <div class="mb-3">
     <label for="Description" class="form-label">Description</label>
-    <textarea name="listing[description]" rows="4"  class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"> </textarea>
+    <textarea name="listing[description]" rows="4"  class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required> </textarea>
+    <div class="valid-feedback">
+      Description Looks good!
+    </div>
+    <div class="invalid-feedback">
+      description is wrong!
+    </div>
   </div>
   
+  <!-- <div class="mb-3">
+    <label for="imgage" class="form-label">image-link</label>
+    <input name="listing[image]" placeholder="enter image/URL" class="form-control" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+    <div class="valid-feedback">
+      image Looks good!
+    </div>
+    <div class="invalid-feedback">
+      image is wrong!
+    </div>
+  </div> -->
   <div class="mb-3">
-    <label for="imgage" class="form-label">image</label>
-    <input name="listing[image]" placeholder="enter image/URL" class="form-control" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <label for="image" class="form-label">upload-image</label>
+    <input name="listing[image]"  type="file" placeholder="enter image/URL" class="form-control" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
   </div>
-
   <div class="row">
   <div class="mb-3 col-4">
     <label for="title" class="form-label">price</label>
-    <input type="number" name="listing[price]" placeholder="enter price" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" name="listing[price]" placeholder="enter price" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" >
+    <div class="valid-feedback">
+      price Looks good!
+    </div>
+
+    <div class="invalid-feedback">
+      price is wrong!
+    </div>
   </div>
 
   <div class="mb-3 col-8">
     <label for="country" class="form-label">country</label>
-    <input type="text" name="listing[country]" placeholder="enter country" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" name="listing[country]" placeholder="enter country" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" >
+        <div class="valid-feedback">
+      country Looks good!
+    </div>
+    <div class="invalid-feedback">
+      country is wrong!
+    </div>
   </div>
   </div>
 
   <div class="mb-3">
     <label for="location" class="form-label">Location</label>
-    <input type="text" name="listing[location]" class="form-control"placeholder="enter location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" name="listing[location]" class="form-control"placeholder="enter location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+    <div class="valid-feedback">
+      location Looks good!
+    </div>
+    <div class="invalid-feedback">
+      location is wrong!
+    </div>
   </div>
 
 <button class=" mb-3 btn btn-dark add-btn">Add</button><!--add-btn=class of button-->

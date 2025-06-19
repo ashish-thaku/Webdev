@@ -15,7 +15,8 @@ async function main() {
 //delete initial data and insert new data
 const initDB=async()=>{
     await Listing.deleteMany({});
+    initdata.data=initdata.data.map((obj)=>({...obj, owner:"684a9bb9327822eeb1596aad"})) //add extran owner part in db of listing data
     await Listing.insertMany(initdata.data)
     console.log("data inserted successfully")
-}
+};
 initDB()

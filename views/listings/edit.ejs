@@ -1,32 +1,66 @@
 <% layout("/layouts/boilerplate")%>
 <div class="row">
 <div class="col-8  offset-2">
-<form method="post" action="/listings/<%=listing._id%>?_method=PUT">
+<form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" name="listing[title]" class="form-control" value="<%=listing.title%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="text" name="listing[title]" class="form-control" value="<%=listing.title%>" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+        <div class="valid-feedback">
+      Title Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Title is wrong!
+    </div>
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">description</label>
-      <textarea name="listing[description]" class="form-control" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><%=listing.description%> </textarea>
+      <textarea name="listing[description]" class="form-control" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required><%=listing.description%> </textarea>
+      <div class="valid-feedback">
+      description Looks good!
+    </div>
+    <div class="invalid-feedback">
+      description is wrong!
+    </div>
+  </div>
+  <div class="mb-3">
+    Original-listing-image <br/>
+    <img src="<%=OriginalIamgeUrl%>"  alt="">
   </div>
     <div class="mb-3">
-    <label for="image" class="form-label">image/url</label>
-      <input name="listing[image.url]" value="<%=listing.image.url%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <label for="image" class="form-label">upload new image</label>
+      <input name="listing[image]" type="file"  class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" >
+          <div class="valid-feedback">
+      image Looks good!
+    </div>
+    <div class="invalid-feedback">
+      image is wrong!
+    </div>
   </div>
   <div class="row">
   <div class="mb-3 col-4">
     <label for="price" class="form-label">price</label>
-      <input type="number" name="listing[price]" value="<%=listing.price%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      <input type="number" name="listing[price]" value="<%=listing.price%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
   </div>
   <div class="mb-3 col-8">
     <label for="country" class="form-label">country</label>
-      <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
   </div>
+    <div class="valid-feedback">
+      Title Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Title is wrong!
+    </div>
   </div>
   <div class="mb-3">
     <label for="location" class="form-label">location</label>
-      <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+          <div class="valid-feedback">
+      location Looks good!
+    </div>
+    <div class="invalid-feedback">
+      location is wrong!
+    </div>
     </div>
 <button class="mb-3 btn btn-dark edit-btn">Edit</button>
 </form>

@@ -1,12 +1,14 @@
-body{
-    background-color: rgb(37, 223, 72);
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 500;
-    font-style: italic;
+
+body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    background-color: rgb(37, 223, 72);
 }
+
 
 .container{
     flex: 1;
@@ -31,6 +33,7 @@ body{
 .i-link a :hover{
     text-decoration: underline;
 }
+
 .f-info{
     display: flex;
     background-color: antiquewhite;
@@ -38,12 +41,13 @@ body{
     text-align: center;
     justify-content: center;
     flex-wrap: wrap; 
+    
 }
 
 .card-body {
     font-weight:bold;
-    
 }
+
 
 .f-info-social,.i-link {
     width: 100%;
@@ -55,12 +59,17 @@ body{
     font-size: 1.2rem;
 }
 .card{
+    border: 2rem;
+    margin-bottom:  2rem;
+}
+.listing-card{
     margin-bottom:  2rem;
     border: none!important;
+    width: 500px;
 }
 .card-img-top{
     border-radius: 1rem;
-    width: 100%;
+    
 }
 .listing-link{
     text-decoration: none;
@@ -91,5 +100,11 @@ body{
 }
 .btns{
     display: flex;
+    
+}
+#map{
+    height: 400px;
+    width: 100vh;
+    border-radius: 16px;
     
 }
