@@ -77,7 +77,7 @@ const sessionOption={
 
 
 app.get("/",(req,res)=>{
-    res.send("i am working")
+    res.render("/listings")
 })
 
 
