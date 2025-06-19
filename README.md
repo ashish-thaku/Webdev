@@ -1,7 +1,11 @@
 # Webdev
 MERN STACK
 
+<<<<<<< HEAD
 # Listings Management App
+=======
+# Dynamic website for longe/villa
+>>>>>>> cf48f810f4e2cfcf028fefee4f4667fc7894f144
 A simple full-stack web app built with **Express**, **MongoDB**, and **Mongoose** to create, read, update, and delete property listings. It includes a user-friendly interface to edit listings with image URLs, descriptions, pricing, and location.
 
 ---
