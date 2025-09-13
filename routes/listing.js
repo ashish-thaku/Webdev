@@ -8,19 +8,7 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({
   storage,
-  limits: {}, // no limits on file size
-  fileFilter: (req, file, cb) => {
-    // Optional: allow only audio files for the "song" field
-    if (file.fieldname === "song") {
-      if (file.mimetype.startsWith("audio/")) {
-        cb(null, true);
-      } else {
-        cb(new Error("Only audio files are allowed for song!"), false);
-      }
-    } else {
-      cb(null, true); // allow other files (like images)
-    }
-  },
+  limits: { fileSize: 50 * 1024 * 1024 } // 50 MB
 });
 
 // INDEX + CREATE
