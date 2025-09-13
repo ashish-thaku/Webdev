@@ -13,9 +13,8 @@
     </div>
     <!-- 🎶 Listing Song -->
 <% if (listing.song && listing.song.url) { %>
-  <audio id="listingSong" src="<%= listing.song.url %>" controls></audio>
+    <audio id="listingSong" src="<%= listing.song.url %>" controls></audio>
 <% } %>
-
     <ul>
         <li><b>Username:<i><%= listing.owner.username %></i></b></li>
         <li><%= listing.description %></li>
