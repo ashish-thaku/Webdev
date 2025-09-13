@@ -1,26 +1,47 @@
 const express = require("express");
-const router=express.Router()
-const wrapAsync=require("../init/wrapAsync.js");
-const {isLoggedIn,isOwner,validtelisting}=require("../middleware.js");
-const { index,CreateRoute,ShowRoute,EditRoute,UpdateRoute,DeleteRoute } = require("../controller/listing.js");
+const router = express.Router();
+const wrapAsync = require("../init/wrapAsync.js");
+const { isLoggedIn, isOwner, validtelisting } = require("../middleware.js");
+const { index, CreateRoute, ShowRoute, EditRoute, UpdateRoute, DeleteRoute } = require("../controller/listing.js");
 
-const multer  = require('multer')
-const {storage}=require("../cloudConfig.js")
-const upload = multer({storage })
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
 
-router.route("/").get(wrapAsync(index))//index route
-.post(isLoggedIn,upload.single('listing[image]'),validtelisting,wrapAsync(CreateRoute));//Create Route
+// INDEX + CREATE
+router.route("/")
+  .get(wrapAsync(index)) // Index route
+  .post(
+    isLoggedIn,
+    upload.fields([
+      { name: "listing[image]", maxCount: 1 },
+      { name: "song", maxCount: 1 }   // 🎵 added song field
+    ]),
+    validtelisting,
+    wrapAsync(CreateRoute)
+  );
 
-//New Route
+// NEW Route
 router.get("/new", isLoggedIn, (req, res) => {
-    res.render("listings/new"); // or whatever your form view is
+  res.render("listings/new");
 });
 
-router.route("/:id").get(wrapAsync(ShowRoute))// Show Route (renamed to match plural "listings")
-.put(isLoggedIn,isOwner,upload.single('listing[image]'),validtelisting,wrapAsync(UpdateRoute))//Update Route
-.delete( isLoggedIn, isOwner,wrapAsync( DeleteRoute));//DELETE ROUTE
+// SHOW + UPDATE + DELETE
+router.route("/:id")
+  .get(wrapAsync(ShowRoute)) // Show Route
+  .put(
+    isLoggedIn,
+    isOwner,
+    upload.fields([
+      { name: "listing[image]", maxCount: 1 },
+      { name: "song", maxCount: 1 }   // 🎵 also allow updating song
+    ]),
+    validtelisting,
+    wrapAsync(UpdateRoute)
+  )
+  .delete(isLoggedIn, isOwner, wrapAsync(DeleteRoute));
 
-//Edit ROute
-router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(EditRoute))
+// EDIT Route
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(EditRoute));
 
-module.exports=router
+module.exports = router;

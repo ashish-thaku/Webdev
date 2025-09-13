@@ -21,6 +21,10 @@ const listingSchema=new Schema({
             
         }
     ],
+     song: {
+    url: String,     // Cloudinary/local file URL
+    filename: String // Cloudinary filename (for deletion)
+  },
     owner:{
         type:Schema.Types.ObjectId,
         ref:"User",
