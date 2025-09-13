@@ -8,44 +8,26 @@ module.exports.index=async(req,res)=>{
     res.render('listings/index',{allListing}); 
 }
 
-module.exports.CreateRoute = async (req, res, next) => {
-  let response = await geocodingClient
-    .forwardGeocode({
-      query: req.body.listing.location,
-      limit: 1,
-    })
-    .send();
+module.exports.CreateRoute=async (req, res,next) => {
+    let response=await geocodingClient.forwardGeocode({
+    query:req.body.listing.location,
+    limit: 1
+})
+  .send();
 
-  const newlisting = new Listing(req.body.listing);
-  newlisting.owner = req.user._id;
 
-  // ✅ Handle image upload
-  if (req.files["listing[image]"]) {
-    newlisting.image = req.files["listing[image]"].map(f => ({
-      url: f.path,
-      filename: f.filename,
-    }));
-  }
-
-  // ✅ Handle song upload
-  if (req.files["song"]) {
-    newlisting.song = {
-      url: req.files["song"][0].path,
-      filename: req.files["song"][0].filename,
-    };
-  }
-
-  // ✅ Location geometry
-  newlisting.geometry = response.body.features[0].geometry;
-
-  let savelisting = await newlisting.save();
-  console.log(savelisting);
-
-  req.flash("success", "Listing created successfully");
-  res.redirect("/listings");
+    let url=req.file.path
+    let filename=req.file.filename
+    
+    const newlisting = new Listing(req.body.listing);
+    newlisting.owner=req.user._id;
+    newlisting.image={url,filename}
+    newlisting.geometry=response.body.features[0].geometry 
+    let savelisting= await newlisting.save();// assuming Mongoose model
+    console.log(savelisting)
+    req.flash("success","listing created successfully")
+    res.redirect("/listings");  
 };
-
-
 module.exports.ShowRoute=async (req, res,next) => {
     let { id } = req.params;
     const listing = await Listing.findById(id)

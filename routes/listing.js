@@ -1,70 +1,26 @@
 const express = require("express");
-const router = express.Router();
-const wrapAsync = require("../init/wrapAsync.js");
-const { isLoggedIn, isOwner, validtelisting } = require("../middleware.js");
-const { index, CreateRoute, ShowRoute, EditRoute, UpdateRoute, DeleteRoute } = require("../controller/listing.js");
+const router=express.Router()
+const wrapAsync=require("../init/wrapAsync.js");
+const {isLoggedIn,isOwner,validtelisting}=require("../middleware.js");
+const { index,CreateRoute,ShowRoute,EditRoute,UpdateRoute,DeleteRoute } = require("../controller/listing.js");
 
-const multer = require("multer");
-const { storage } = require("../cloudConfig.js");
-const upload = multer({
-  storage,
-  limits: {}, // no size limit
-  fileFilter: (req, file, cb) => {
-    if (file.fieldname === "song") {
-      // Only allow audio files for the song field
-      if (file.mimetype.startsWith("audio/")) {
-        cb(null, true);
-      } else {
-        cb(new Error("Only audio files are allowed for song!"), false);
-      }
-    } else if (file.fieldname === "listing[image]") {
-      // Only allow image files for the image field
-      if (file.mimetype.startsWith("image/")) {
-        cb(null, true);
-      } else {
-        cb(new Error("Invalid image file!"), false);
-      }
-    } else {
-      cb(null, true); // allow other files (if any)
-    }
-  },
-});
+const multer  = require('multer')
+const {storage}=require("../cloudConfig.js")
+const upload = multer({storage })
 
+router.route("/").get(wrapAsync(index))//index route
+.post(isLoggedIn,upload.single('listing[image]'),validtelisting,wrapAsync(CreateRoute));//Create Route
 
-// INDEX + CREATE
-router.route("/")
-  .get(wrapAsync(index)) // Index route
-  .post(
-    isLoggedIn,
-    upload.fields([
-      { name: "listing[image]", maxCount: 1 },
-      { name: "song", maxCount: 1 }   // 🎵 added song field
-    ]),
-    validtelisting,
-    wrapAsync(CreateRoute)
-  );
-
-// NEW Route
+//New Route
 router.get("/new", isLoggedIn, (req, res) => {
-  res.render("listings/new");
+    res.render("listings/new"); // or whatever your form view is
 });
 
-// SHOW + UPDATE + DELETE
-router.route("/:id")
-  .get(wrapAsync(ShowRoute)) // Show Route
-  .put(
-    isLoggedIn,
-    isOwner,
-    upload.fields([
-      { name: "listing[image]", maxCount: 1 },
-      { name: "song", maxCount: 1 }   // 🎵 also allow updating song
-    ]),
-    validtelisting,
-    wrapAsync(UpdateRoute)
-  )
-  .delete(isLoggedIn, isOwner, wrapAsync(DeleteRoute));
+router.route("/:id").get(wrapAsync(ShowRoute))// Show Route (renamed to match plural "listings")
+.put(isLoggedIn,isOwner,upload.single('listing[image]'),validtelisting,wrapAsync(UpdateRoute))//Update Route
+.delete( isLoggedIn, isOwner,wrapAsync( DeleteRoute));//DELETE ROUTE
 
-// EDIT Route
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(EditRoute));
+//Edit ROute
+router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(EditRoute))
 
-module.exports = router;
+module.exports=router

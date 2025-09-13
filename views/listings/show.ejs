@@ -11,10 +11,6 @@
         <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
  
     </div>
-    <!-- 🎶 Listing Song -->
-<% if (listing.song && listing.song.url) { %>
-    <audio id="listingSong" src="<%= listing.song.url %>" controls></audio>
-<% } %>
     <ul>
         <li><b>Username:<i><%= listing.owner.username %></i></b></li>
         <li><%= listing.description %></li>
@@ -96,20 +92,5 @@
 </div>
 
 <script src="/js/map.js"></script>
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById("listingSong");
-    if (audio) {
-      audio.play().catch(() => {
-        // Autoplay blocked, show play button
-        const btn = document.createElement("button");
-        btn.innerText = "▶ Play Song";
-        btn.className = "btn btn-dark mt-3";
-        btn.onclick = () => audio.play();
-        document.querySelector(".col-6.offset-2").appendChild(btn);
-      });
-    }
-  });
-</script>
 
 
