@@ -23,4 +23,5 @@ router.route("/:id").get(wrapAsync(ShowRoute))// Show Route (renamed to match pl
 //Edit ROute
 router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(EditRoute))
 
+
 module.exports=router

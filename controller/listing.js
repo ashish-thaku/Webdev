@@ -74,3 +74,17 @@ module.exports.DeleteRoute=async (req, res) => {
     console.log(deletedListing);
     res.redirect("/listings");
 }
+
+module.exports.index = async (req, res) => {
+    let { country } = req.query;
+    let filter = {};
+
+    if (country) {
+        // case-insensitive regex search
+        filter.country = new RegExp(country, "i");
+    }
+
+    const allListing = await Listing.find(filter);
+
+    res.render("listings/index", { allListing, searchCountry: country || "" });
+};

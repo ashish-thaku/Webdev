@@ -82,7 +82,9 @@
 </div>
 </div>
 </div>
-    
+     <% if (allListing.length === 0) { %>
+  <p class="text-center mt-4">No listings found for "<%= searchCountry %>"</p>
+<% } %>
     <ul>
         <!-- <form method="get" action="/listings/new">
             <button>New user</button>
